@@ -1,7 +1,7 @@
 {
-  "name": "express-robots",
-  "version": "0.1.6",
-  "description": "Express middleware for generating your robots.txt",
+  "name": "express-robots-txt",
+  "version": "0.2.0",
+  "description": "Express middleware to serve and generate robots.txt",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weo-edu/express-robots"
+    "url": "https://github.com/modosc/express-robots-txt"
   },
   "keywords": [
     "express",
@@ -19,19 +19,18 @@
     "robots.txt",
     "robots"
   ],
-  "author": "ashaffer (http://github.com/ashaffer)",
+  "author": "modosc (http://github.com/modosc)",
+  "contributors": [ "ashaffer (http://github.com/ashaffer)"],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/weo-edu/express-robots/issues"
+    "url": "https://github.com/modosc/express-robots-txt/issues"
   },
-  "homepage": "https://github.com/weo-edu/express-robots",
-  "dependencies": {
-    "as-array": "git://github.com/weo-edu/as-array"
-  },
+  "homepage": "https://github.com/modosc/express-robots-txt",
+  "dependencies": {},
   "devDependencies": {
-    "chai": "^2.1.0",
+    "chai": "^3.5.0",
     "express": "^4.12.1",
-    "mocha": "^2.1.0",
-    "supertest": "^0.15.0"
+    "mocha": "^3.2.0",
+    "supertest": "^3.0.0"
   }
 }

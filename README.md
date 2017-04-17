@@ -1,6 +1,6 @@
-# express-robots
+# express-robots-txt
 
-Express middleware for generating a robots.txt or responding with an existing file.
+Express middleware for generating a robots.txt or responding with an existing file. Forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots). 
 
 ## Using a file
 

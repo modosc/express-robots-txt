@@ -1,11 +1,20 @@
 var fs = require('fs');
-var asArray = require('as-array');
 
 if (!Array.isArray) {
   Array.isArray = function(arg) {
     return Object.prototype.toString.call(arg) === '[object Array]';
   };
 }
+
+var asArray = function(value) {
+  if(value === undefined)
+    return [];
+  else if(Array.isArray(value))
+    return value;
+  else
+    return [value];
+};
+
 
 module.exports = function(robots) {
   var app = require('express')();
