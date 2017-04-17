@@ -35,6 +35,37 @@ UserAgent: *
 Disallow: /
 Crawl-delay: 5
 ```
+### Sitemap
+You can optionally pass a Sitemap in just like passing in CrawlDelay:
+
+
+```javascript
+app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: 'https://nowhere.com/sitemap.xml'}))
+```
+
+#### Will produce:
+```
+UserAgent: *
+Disallow: /
+Crawl-delay: 5
+Sitemap: https://nowhere.com/sitemap.xml
+```
+
+You can also pass in an array of Sitemaps:
+
+
+```javascript
+app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: ['https://nowhere.com/sitemap.xml', 'https://nowhere.com/sitemap2.xml'] }))
+```
+
+#### Will produce:
+```
+UserAgent: *
+Disallow: /
+Crawl-delay: 5
+Sitemap: https://nowhere.com/sitemap.xml
+Sitemap: https://nowhere.com/sitemap2.xml
+```
 
 ### Or an array of objects
 
