@@ -20,7 +20,10 @@
     "robots"
   ],
   "author": "modosc (http://github.com/modosc)",
-  "contributors": [ "ashaffer (http://github.com/ashaffer)"],
+  "contributors": [
+    "ashaffer (http://github.com/ashaffer)",
+    "Mathieu Maes (http://github.com/webberig"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/modosc/express-robots-txt/issues"
