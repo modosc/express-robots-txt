@@ -1,4 +1,4 @@
-# express-robots-txt [![npm version](https://badge.fury.io/js/express-robots-txt.svg)](https://badge.fury.io/js/express-robots-txt)
+# express-robots-txt [![npm version](https://badge.fury.io/js/express-robots-txt.svg)](https://badge.fury.io/js/express-robots-txt) [![CircleCI](https://circleci.com/gh/modosc/express-robots-txt.svg?style=shield)](https://circleci.com/gh/modosc/express-robots-txt)
 
 Express middleware for generating a robots.txt or responding with an existing file. Forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots). 
 
