@@ -1,6 +1,6 @@
 {
   "name": "express-robots-txt",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Express middleware to serve and generate robots.txt",
   "main": "index.js",
   "directories": {
@@ -13,12 +13,7 @@
     "type": "git",
     "url": "https://github.com/modosc/express-robots-txt"
   },
-  "keywords": [
-    "express",
-    "robots",
-    "robots.txt",
-    "robots"
-  ],
+  "keywords": ["express", "robots", "robots.txt", "robots"],
   "author": "modosc (http://github.com/modosc)",
   "contributors": [
     "ashaffer (http://github.com/ashaffer)",
@@ -31,9 +26,12 @@
   "homepage": "https://github.com/modosc/express-robots-txt",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "express": "^4.12.1",
-    "mocha": "^3.2.0",
+    "mocha": "^5.2.0",
     "supertest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "express": "^4.12.1"
   }
 }
