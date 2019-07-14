@@ -13,7 +13,12 @@
     "type": "git",
     "url": "https://github.com/modosc/express-robots-txt"
   },
-  "keywords": ["express", "robots", "robots.txt", "robots"],
+  "keywords": [
+    "express",
+    "robots",
+    "robots.txt",
+    "robots"
+  ],
   "author": "modosc (http://github.com/modosc)",
   "contributors": [
     "ashaffer (http://github.com/ashaffer)",
@@ -28,15 +33,18 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "express": "^4.12.1",
-    "jest": "^23.3.0",
-    "supertest": "^3.0.0"
+    "jest": "^24.8.0",
+    "supertest": "^4.0.2"
   },
   "peerDependencies": {
     "express": "^4.12.1"
   },
   "jest": {
-    "setupTestFrameworkScriptFile":
-      "<rootDir>/test/setup-test-framework-script.js",
-    "testMatch": ["<rootDir>/test/index.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup-test-framework-script.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/index.js"
+    ]
   }
 }
