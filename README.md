@@ -13,12 +13,12 @@ app.use(robots(__dirname + '/robots.txt'));
 ### Basic object
 
 ```javascript
-app.use(robots({UserAgent: '*', Disallow: '/'}))
+app.use(robots({ UserAgent: '*', Disallow: '/' }))
 ```
 
 #### Will produce:
 ```
-UserAgent: *
+User-agent: *
 Disallow: /
 ```
 
@@ -26,12 +26,12 @@ Disallow: /
 You can optionally pass a CrawlDelay in just like passing in Disallow
 
 ```javascript
-app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '5'}))
+app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5' }))
 ```
 
 #### Will produce:
 ```
-UserAgent: *
+User-agent: *
 Disallow: /
 Crawl-delay: 5
 ```
@@ -40,12 +40,12 @@ You can optionally pass a Sitemap in just like passing in CrawlDelay:
 
 
 ```javascript
-app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: 'https://nowhere.com/sitemap.xml'}))
+app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: 'https://nowhere.com/sitemap.xml' }))
 ```
 
 #### Will produce:
 ```
-UserAgent: *
+User-agent: *
 Disallow: /
 Crawl-delay: 5
 Sitemap: https://nowhere.com/sitemap.xml
@@ -53,14 +53,13 @@ Sitemap: https://nowhere.com/sitemap.xml
 
 You can also pass in an array of Sitemaps:
 
-
 ```javascript
-app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: ['https://nowhere.com/sitemap.xml', 'https://nowhere.com/sitemap2.xml'] }))
+app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: ['https://nowhere.com/sitemap.xml', 'https://nowhere.com/sitemap2.xml'] }))
 ```
 
 #### Will produce:
 ```
-UserAgent: *
+User-agent: *
 Disallow: /
 Crawl-delay: 5
 Sitemap: https://nowhere.com/sitemap.xml
@@ -84,9 +83,9 @@ app.use(robots([
 
 #### Will produce:
 ```
-UserAgent: Googlebot
+User-agent: Googlebot
 Disallow: /no-google
-UserAgent: Bingbot
+User-agent: Bingbot
 Disallow: /no-bing
 ```
 
@@ -107,11 +106,11 @@ app.use(robots([
 
 #### Will produce:
 ```
-UserAgent: Googlebot
-UserAgent: Slurp
+User-agent: Googlebot
+User-agent: Slurp
 Disallow: /no-google
 Disallow: /no-yahoo
-UserAgent: *
+User-agent: *
 Disallow: /no-bots
 Disallow: /still-no-bots
 ```
