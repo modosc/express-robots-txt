@@ -152,4 +152,15 @@ describe("express-robots", () => {
       expect(res.text).to.equal("");
     });
   });
+
+  test("should work with host", done => {
+    app.use(robots());
+    var request = createSuperTest(robots({ UserAgent: "*", Disallow: "/", Host: "some host" }));
+    request.get("/robots.txt").end(function(err, res) {
+      expect(res.status).to.equal(200);
+      expect(res.headers["content-type"]).to.equal("text/plain; charset=utf-8");
+      expect(res.text).to.equal("User-agent: *\nDisallow: /\nHost: some host");
+      done();
+    });
+  });
 });
