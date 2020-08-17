@@ -1,6 +1,6 @@
 # express-robots-txt [![npm version](https://badge.fury.io/js/express-robots-txt.svg)](https://badge.fury.io/js/express-robots-txt) ![Node.js CI](https://github.com/modosc/express-robots-txt/workflows/Node.js%20CI/badge.svg)
 
-Express middleware for generating a robots.txt or responding with an existing file. Forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots). 
+Express middleware for generating a robots.txt or responding with an existing file. Forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots).
 
 ## Using a file
 
@@ -113,4 +113,21 @@ Disallow: /no-yahoo
 User-agent: *
 Disallow: /no-bots
 Disallow: /still-no-bots
+```
+
+### Host
+You can optionally pass a Host in just like passing in Disallow. Note that [some
+crawlers](https://en.wikipedia.org/wiki/Robots_exclusion_standard#Host) may not
+support this drective.
+
+```javascript
+app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Host: 'foobar.com' }))
+```
+
+#### Will produce:
+```
+User-agent: *
+Disallow: /
+Crawl-delay: 5
+Host: foobar.com
 ```
