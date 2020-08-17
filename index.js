@@ -36,6 +36,7 @@ module.exports = function(robots) {
 
 function render(robots) {
   var SitemapArray = []
+  var HostArray = []
   var robots = asArray(robots).map(function(robot) {
     var userAgentArray = [];
     if (Array.isArray(robot.UserAgent)) {
@@ -52,6 +53,9 @@ function render(robots) {
     if (robot.Sitemap) {
       SitemapArray = SitemapArray.concat(robot.Sitemap)
     }
+    if (robot.Host) {
+      HostArray = HostArray.concat(robot.Host)
+    }
 
     return userAgentArray.concat(asArray(robot.Disallow).map(function(disallow) {
       if (Array.isArray(disallow)) {
@@ -65,6 +69,9 @@ function render(robots) {
 
   if (SitemapArray.length > 0) {
     robots += '\n' + SitemapArray.map(function(sitemap) { return 'Sitemap: ' + sitemap }).join('\n');
+  }
+  if (HostArray.length > 0) {
+    robots += '\n' + HostArray.map(function(host) { return 'Host: ' + host }).join('\n');
   }
 
   return robots;
