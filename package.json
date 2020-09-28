@@ -34,7 +34,7 @@
     "chai": "^4.1.2",
     "express": "^4.12.1",
     "jest": "^26.1.0",
-    "supertest": "^4.0.2"
+    "supertest": "^5.0.0"
   },
   "peerDependencies": {
     "express": "^4.12.1"
