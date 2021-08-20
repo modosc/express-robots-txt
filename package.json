@@ -2,12 +2,16 @@
   "name": "express-robots-txt",
   "version": "0.5.0",
   "description": "Express middleware to serve and generate robots.txt",
-  "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest",
+    "lint": "eslint --fix *.mjs test/*.mjs"
   },
   "repository": {
     "type": "git",
@@ -31,20 +35,68 @@
   "homepage": "https://github.com/modosc/express-robots-txt",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/eslint-parser": "^7.15.0",
     "chai": "^4.1.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-jest": "^24.4.0",
     "express": "^4.12.1",
-    "jest": "^27.0.4",
+    "jest": "next",
+    "jest-config": "^27.0.6",
     "supertest": "^6.0.0"
   },
   "peerDependencies": {
     "express": "^4.12.1"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setup-test-framework-script.js"
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb-base"
     ],
-    "testMatch": [
-      "<rootDir>/test/index.js"
-    ]
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "ecmaFeatures": {
+        "globalReturn": false
+      },
+      "requireConfigFile": false
+    },
+    "plugins": [
+      "babel"
+    ],
+    "rules": {
+      "import/extensions": [
+        "error",
+        {
+          "mjs": "always"
+        }
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "strict": 0,
+      "no-underscore-dangle": 0
+    }
   }
 }
