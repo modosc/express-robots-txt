@@ -1,17 +1,22 @@
 {
   "name": "express-robots-txt",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Express middleware to serve and generate robots.txt",
-  "type": "module",
-  "directories": {
-    "test": "test"
-  },
+  "main": "commonjs/index.js",
+  "module": "esm/index.mjs",
+  "jsnext:main": "esm/index.mjs",
+  "files": [
+    "esm/*",
+    "commonjs/*"
+  ],
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "test": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest",
-    "lint": "eslint --fix *.mjs test/*.mjs"
+    "lint": "eslint --fix *.mjs esm/*.mjs test/*.mjs",
+    "build:cjs": "babel esm --out-dir commonjs/ --source-maps",
+    "build": "yarn lint && yarn test && yarn build:cjs"
   },
   "repository": {
     "type": "git",
@@ -35,8 +40,10 @@
   "homepage": "https://github.com/modosc/express-robots-txt",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "chai": "^4.1.2",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -44,12 +51,24 @@
     "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest": "^24.4.0",
     "express": "^4.12.1",
-    "jest": "next",
+    "jest": "27.0.6",
     "jest-config": "^27.0.6",
     "supertest": "^6.0.0"
   },
   "peerDependencies": {
     "express": "^4.12.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   },
   "eslintConfig": {
     "env": {

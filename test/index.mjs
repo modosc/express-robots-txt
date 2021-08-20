@@ -4,7 +4,7 @@ import express from 'express'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import robots from '../index.mjs'
+import robots from '../esm/index.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
