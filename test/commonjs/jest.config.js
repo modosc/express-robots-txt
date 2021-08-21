@@ -1,12 +1,12 @@
 /* eslint import/no-extraneous-dependencies: "off" */
 // Or async function
-import { defaults } from 'jest-config'
+const { defaults } = require('jest-config')
 
-export default async () => ({
+module.exports = {
   verbose: true,
   setupFilesAfterEnv: [
-    '<rootDir>/test/setup-test-framework-script.mjs',
+    '<rootDir>/setup-test-framework-script.js',
   ],
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'mjs', 'ts', 'tsx'],
-  testMatch: ['<rootDir>/test/index.mjs'],
-})
+  testMatch: ['<rootDir>/index.js'],
+}

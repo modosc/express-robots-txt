@@ -1,5 +1,5 @@
-import express from 'express'
-import robots from 'express-robots-txt'
+const express = require('express')
+const robots = require('express-robots-txt')
 
 const app = express()
 const port = 3000

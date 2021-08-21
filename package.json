@@ -2,9 +2,9 @@
   "name": "express-robots-txt",
   "version": "1.0.0",
   "description": "Express middleware to serve and generate robots.txt",
-  "main": "commonjs/index.js",
-  "module": "esm/index.mjs",
-  "jsnext:main": "esm/index.mjs",
+  "main": "./commonjs/index.js",
+  "module": "./esm/index.mjs",
+  "jsnext:main": "./esm/index.mjs",
   "files": [
     "esm/*",
     "commonjs/*"
@@ -13,10 +13,12 @@
     "node": ">=14"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest",
-    "lint": "eslint --fix *.mjs esm/*.mjs test/*.mjs",
+    "test:esm": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest -c test/esm/jest.config.mjs",
+    "test:commonjs": "jest -c test/commonjs/jest.config.js",
+    "test": "yarn test:esm && yarn test:commonjs",
+    "lint": "eslint --fix  esm/*.mjs test/esm/*.mjs test/commonjs/*.js",
     "build:cjs": "babel esm --out-dir commonjs/ --source-maps",
-    "build": "yarn lint && yarn test && yarn build:cjs"
+    "build": "yarn lint && yarn build:cjs && yarn test"
   },
   "repository": {
     "type": "git",
@@ -44,6 +46,7 @@
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "chai": "^4.1.2",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -68,6 +71,9 @@
           }
         }
       ]
+    ],
+    "plugins": [
+      "add-module-exports"
     ]
   },
   "eslintConfig": {

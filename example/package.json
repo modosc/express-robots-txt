@@ -2,6 +2,10 @@
   "name": "example",
   "version": "1.0.0",
   "license": "MIT",
+  "scripts": {
+    "start:esm": "node index.mjs",
+    "start:commonjs": "node index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "express-robots-txt": "^1.0.0"

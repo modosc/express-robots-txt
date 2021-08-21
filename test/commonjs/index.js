@@ -1,12 +1,11 @@
-import fs from 'fs'
-import supertest from 'supertest'
-import express from 'express'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+const supertest = require('supertest')
+const express = require('express')
+const path = require('path')
+const fs = require('fs')
 
-import robots from '../esm/index.mjs'
+const robots = require('../../commonjs')
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const robotsTxt = path.resolve(__dirname, '../fixtures/robots.txt')
 
 function createSuperTest(robotsMw) {
   const app = express()
@@ -143,11 +142,11 @@ describe('express-robots', () => {
   })
 
   test('should work with files', () => {
-    const request = createSuperTest(robots(`${__dirname}/fixtures/robots.txt`))
+    const request = createSuperTest(robots(robotsTxt))
     request.get('/robots.txt').end((err, res) => {
       expect(res.status).to.equal(200)
       expect(res.text).to.equal(
-        fs.readFileSync(`${__dirname}/fixtures/robots.txt`, 'utf8'),
+        fs.readFileSync(robotsTxt, 'utf8'),
       )
     })
   })

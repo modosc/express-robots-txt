@@ -1,11 +1,6 @@
 import fs from 'fs'
 import { Router } from 'express'
-
-if (!Array.isArray) {
-  Array.isArray = function isArray(arg) {
-    return Object.prototype.toString.call(arg) === '[object Array]'
-  }
-}
+import { EOL } from 'os'
 
 const asArray = function asArray(value) {
   if (value === undefined) return []
@@ -13,27 +8,10 @@ const asArray = function asArray(value) {
   return [value]
 }
 
-function robots(robots) {
-  const router = Router()
-
-  if (robots) {
-    robots = typeof robots === 'string'
-      ? fs.readFileSync(robots, 'utf8')
-      : render(robots)
-  } else robots = ''
-
-  router.get('/robots.txt', (req, res) => {
-    res.header('Content-Type', 'text/plain')
-    res.send(robots)
-  })
-
-  return router
-}
-
-function render(robots) {
+function render(config) {
   let SitemapArray = []
   let HostArray = []
-  var robots = asArray(robots).map((robot) => {
+  let output = asArray(config).map((robot) => {
     let userAgentArray = []
     if (Array.isArray(robot.UserAgent)) {
       userAgentArray = robot.UserAgent.map((userAgent) => `User-agent: ${userAgent}`)
@@ -53,20 +31,41 @@ function render(robots) {
 
     return userAgentArray.concat(asArray(robot.Disallow).map((disallow) => {
       if (Array.isArray(disallow)) {
-        return disallow.map((line) => `Disallow: ${line}`).join('\n')
+        return disallow.map((line) => `Disallow: ${line}`).join(EOL)
       }
       return `Disallow: ${disallow}`
-    })).join('\n')
-  }).join('\n')
+    })).join(EOL)
+  }).join(EOL)
 
   if (SitemapArray.length > 0) {
-    robots += `\n${SitemapArray.map((sitemap) => `Sitemap: ${sitemap}`).join('\n')}`
+    output += `${EOL}${SitemapArray.map((sitemap) => `Sitemap: ${sitemap}`).join(EOL)}`
   }
   if (HostArray.length > 0) {
-    robots += `\n${HostArray.map((host) => `Host: ${host}`).join('\n')}`
+    output += `${EOL}${HostArray.map((host) => `Host: ${host}`).join(EOL)}`
   }
 
-  return robots
+  return output
+}
+
+function buildRobots(config) {
+  if (config) {
+    if (typeof config === 'string') {
+      return fs.readFileSync(config, 'utf8')
+    }
+    return render(config)
+  }
+  return ''
+}
+
+function robots(config) {
+  const router = Router()
+
+  router.get('/robots.txt', (req, res) => {
+    res.header('Content-Type', 'text/plain')
+    res.send(buildRobots(config))
+  })
+
+  return router
 }
 
 export default robots
