@@ -1,7 +1,29 @@
 # express-robots-txt [![npm version](https://badge.fury.io/js/express-robots-txt.svg)](https://badge.fury.io/js/express-robots-txt) ![Node.js CI](https://github.com/modosc/express-robots-txt/workflows/Node.js%20CI/badge.svg)
 
-Express middleware for generating a robots.txt or responding with an existing file. Forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots).
+Express middleware for generating a robots.txt or responding with an existing file.
+# Usage
+```javascript
+// es6 usage requires a version of node which supports esm_conditional_exports, see
+// https://nodejs.org/api/esm.html#esm_conditional_exports
+import express from 'express'
+import robots from 'express-robots-txt'
 
+// commonjs
+const express = require('express')
+const robots = require('express-robots-txt')
+
+const app = express()
+const port = 3000
+
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/',
+  CrawlDelay: '5',
+  Sitemap: 'https://nowhere.com/sitemap.xml',
+}))
+
+app.listen(port)
+```
 ## Using a file
 
 ```javascript
@@ -13,7 +35,10 @@ app.use(robots(__dirname + '/robots.txt'));
 ### Basic object
 
 ```javascript
-app.use(robots({ UserAgent: '*', Disallow: '/' }))
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/'
+}))
 ```
 
 #### Will produce:
@@ -26,7 +51,11 @@ Disallow: /
 You can optionally pass a CrawlDelay in just like passing in Disallow
 
 ```javascript
-app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5' }))
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/',
+  CrawlDelay: '5'
+}))
 ```
 
 #### Will produce:
@@ -40,7 +69,12 @@ You can optionally pass a Sitemap in just like passing in CrawlDelay:
 
 
 ```javascript
-app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: 'https://nowhere.com/sitemap.xml' }))
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/',
+  CrawlDelay: '5',
+  Sitemap: 'https://nowhere.com/sitemap.xml'
+}))
 ```
 
 #### Will produce:
@@ -54,7 +88,15 @@ Sitemap: https://nowhere.com/sitemap.xml
 You can also pass in an array of Sitemaps:
 
 ```javascript
-app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Sitemap: ['https://nowhere.com/sitemap.xml', 'https://nowhere.com/sitemap2.xml'] }))
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/',
+  CrawlDelay: '5',
+  Sitemap: [
+    'https://nowhere.com/sitemap.xml',
+    'https://nowhere.com/sitemap2.xml'
+  ]
+}))
 ```
 
 #### Will produce:
@@ -121,7 +163,12 @@ crawlers](https://en.wikipedia.org/wiki/Robots_exclusion_standard#Host) may not
 support this drective.
 
 ```javascript
-app.use(robots({ UserAgent: '*', Disallow: '/', CrawlDelay: '5', Host: 'foobar.com' }))
+app.use(robots({
+  UserAgent: '*',
+  Disallow: '/',
+  CrawlDelay: '5',
+  Host: 'foobar.com'
+}))
 ```
 
 #### Will produce:
@@ -131,3 +178,6 @@ Disallow: /
 Crawl-delay: 5
 Host: foobar.com
 ```
+
+## Thanks
+Originally forked from [weo-edu/express-robots](https://github.com/weo-edu/express-robots).
