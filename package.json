@@ -2,16 +2,19 @@
   "name": "express-robots-txt",
   "version": "1.0.0",
   "description": "Express middleware to serve and generate robots.txt",
+  "type": "commonjs",
   "main": "./commonjs/index.js",
+  "exports": {
+    ".": {
+      "require": "./commonjs/index.js",
+      "default": "./esm/index.mjs"
+    }
+  },
   "module": "./esm/index.mjs",
-  "jsnext:main": "./esm/index.mjs",
   "files": [
     "esm/*",
     "commonjs/*"
   ],
-  "engines": {
-    "node": ">=14"
-  },
   "scripts": {
     "test:esm": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest -c test/esm/jest.config.mjs",
     "test:commonjs": "jest -c test/commonjs/jest.config.js",
