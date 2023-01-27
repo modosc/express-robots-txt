@@ -58,7 +58,7 @@
     "eslint-plugin-jest": "^25.0.6",
     "express": "^4.12.1",
     "jest": "^27.3.1",
-    "jest-config": "^27.0.6",
+    "jest-config": "^29.4.1",
     "supertest": "^6.0.0"
   },
   "peerDependencies": {
