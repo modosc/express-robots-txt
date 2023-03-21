@@ -3405,15 +3405,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"example@workspace:packages/express-robots-txt-examples":
-  version: 0.0.0-use.local
-  resolution: "example@workspace:packages/express-robots-txt-examples"
-  dependencies:
-    express: ^4.17.3
-    express-robots-txt: ^1.0.0
-  languageName: unknown
-  linkType: soft
-
 "execa@npm:^5.0.0":
   version: 5.1.1
   resolution: "execa@npm:5.1.1"
@@ -3451,6 +3442,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"express-robots-txt-examples@workspace:packages/express-robots-txt-examples":
+  version: 0.0.0-use.local
+  resolution: "express-robots-txt-examples@workspace:packages/express-robots-txt-examples"
+  dependencies:
+    express: ^4.17.3
+    express-robots-txt: "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "express-robots-txt-workspace@workspace:.":
   version: 0.0.0-use.local
   resolution: "express-robots-txt-workspace@workspace:."
@@ -3473,7 +3473,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"express-robots-txt@^1.0.0, express-robots-txt@workspace:packages/express-robots-txt":
+"express-robots-txt@workspace:^, express-robots-txt@workspace:packages/express-robots-txt":
   version: 0.0.0-use.local
   resolution: "express-robots-txt@workspace:packages/express-robots-txt"
   dependencies:

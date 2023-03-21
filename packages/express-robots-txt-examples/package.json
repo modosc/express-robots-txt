@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "express-robots-txt-examples",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "express": "^4.17.3",
-    "express-robots-txt": "^1.0.0"
+    "express-robots-txt": "workspace:^"
   }
 }
