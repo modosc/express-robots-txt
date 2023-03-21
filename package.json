@@ -6,12 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "test:esm": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest -c test/esm/jest.config.mjs",
-    "test:commonjs": "jest -c test/commonjs/jest.config.js",
-    "test": "yarn test:esm && yarn test:commonjs",
-    "lint": "eslint --fix  esm/*.mjs test/esm/*.mjs test/commonjs/*.js",
-    "build:cjs": "babel esm --out-dir commonjs/ --source-maps",
-    "build": "yarn lint && yarn build:cjs && yarn test"
+    "test": "yarn workspaces foreach run test",
+    "lint": "yarn workspaces foreach run lint",
+    "build": "yarn workspaces foreach run build"
   },
   "repository": {
     "type": "git",
