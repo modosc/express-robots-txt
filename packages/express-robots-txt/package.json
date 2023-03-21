@@ -1,0 +1,129 @@
+{
+  "name": "express-robots-txt",
+  "version": "1.0.0",
+  "description": "Express middleware to serve and generate robots.txt",
+  "type": "commonjs",
+  "main": "./commonjs/index.js",
+  "exports": {
+    ".": {
+      "require": "./commonjs/index.js",
+      "default": "./esm/index.mjs"
+    }
+  },
+  "module": "./esm/index.mjs",
+  "files": [
+    "esm/*",
+    "commonjs/*"
+  ],
+  "scripts": {
+    "test:esm": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest -c test/esm/jest.config.mjs",
+    "test:commonjs": "jest -c test/commonjs/jest.config.js",
+    "test": "yarn test:esm && yarn test:commonjs",
+    "lint": "eslint --fix  esm/*.mjs test/esm/*.mjs test/commonjs/*.js",
+    "build:cjs": "babel esm --out-dir commonjs/ --source-maps",
+    "build": "yarn lint && yarn build:cjs && yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modosc/express-robots-txt"
+  },
+  "keywords": [
+    "express",
+    "robots",
+    "robots.txt",
+    "robots"
+  ],
+  "author": "modosc (http://github.com/modosc)",
+  "contributors": [
+    "ashaffer (http://github.com/ashaffer)",
+    "Mathieu Maes (http://github.com/webberig"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modosc/express-robots-txt/issues"
+  },
+  "homepage": "https://github.com/modosc/express-robots-txt",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/eslint-parser": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "chai": "^4.3.7",
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "express": "^4.18.2",
+    "jest": "29.5.0",
+    "jest-config": "29.5.0",
+    "supertest": "^6.3.3"
+  },
+  "peerDependencies": {
+    "express": "^4.12.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb-base"
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "ecmaFeatures": {
+        "globalReturn": false
+      },
+      "requireConfigFile": false
+    },
+    "plugins": [
+      "babel"
+    ],
+    "rules": {
+      "import/extensions": [
+        "error",
+        {
+          "mjs": "always"
+        }
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "strict": 0,
+      "no-underscore-dangle": 0
+    }
+  }
+}
