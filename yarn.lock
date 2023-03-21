@@ -1951,11 +1951,11 @@ __metadata:
   linkType: hard
 
 "@types/yargs@npm:^17.0.8":
-  version: 17.0.22
-  resolution: "@types/yargs@npm:17.0.22"
+  version: 17.0.23
+  resolution: "@types/yargs@npm:17.0.23"
   dependencies:
     "@types/yargs-parser": "*"
-  checksum: 0773523fda71bafdc52f13f5970039e535a353665a60ba9261149a5c9c2b908242e6e77fbb7a8c06931ec78ce889d64d09673c68ba23eb5f5742d5385d0d1982
+  checksum: c5f787d7a9a36ea94ba5d3f340fc5d93d2860eff8fa9731cd614ed23212e4fca75637e2386e37e376a720e4bf088ceed6f39050f1c3638fc1b75bce5c70b1ad4
   languageName: node
   linkType: hard
 
@@ -3405,6 +3405,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"example@workspace:packages/express-robots-txt-examples":
+  version: 0.0.0-use.local
+  resolution: "example@workspace:packages/express-robots-txt-examples"
+  dependencies:
+    express: ^4.17.3
+    express-robots-txt: ^1.0.0
+  languageName: unknown
+  linkType: soft
+
 "execa@npm:^5.0.0":
   version: 5.1.1
   resolution: "execa@npm:5.1.1"
@@ -3442,9 +3451,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-robots-txt@workspace:.":
+"express-robots-txt-workspace@workspace:.":
   version: 0.0.0-use.local
-  resolution: "express-robots-txt@workspace:."
+  resolution: "express-robots-txt-workspace@workspace:."
+  dependencies:
+    "@babel/cli": ^7.21.0
+    "@babel/core": ^7.21.3
+    "@babel/eslint-parser": ^7.21.3
+    "@babel/preset-env": ^7.20.2
+    babel-plugin-add-module-exports: ^1.0.4
+    chai: ^4.3.7
+    eslint: ^8.36.0
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-plugin-babel: ^5.3.1
+    eslint-plugin-import: ^2.27.5
+    eslint-plugin-jest: ^27.2.1
+    express: ^4.18.2
+    jest: 29.5.0
+    jest-config: 29.5.0
+    supertest: ^6.3.3
+  languageName: unknown
+  linkType: soft
+
+"express-robots-txt@^1.0.0, express-robots-txt@workspace:packages/express-robots-txt":
+  version: 0.0.0-use.local
+  resolution: "express-robots-txt@workspace:packages/express-robots-txt"
   dependencies:
     "@babel/cli": ^7.21.0
     "@babel/core": ^7.21.3
@@ -3466,7 +3497,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"express@npm:^4.18.2":
+"express@npm:^4.17.3, express@npm:^4.18.2":
   version: 4.18.2
   resolution: "express@npm:4.18.2"
   dependencies:

@@ -1,9 +1,19 @@
 {
-  "name": "express-robots-txt-workspace",
+  "name": "express-robots-txt",
+  "version": "1.0.0",
   "description": "Express middleware to serve and generate robots.txt",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "type": "commonjs",
+  "main": "./commonjs/index.js",
+  "exports": {
+    ".": {
+      "require": "./commonjs/index.js",
+      "default": "./esm/index.mjs"
+    }
+  },
+  "module": "./esm/index.mjs",
+  "files": [
+    "esm/*",
+    "commonjs/*"
   ],
   "scripts": {
     "test:esm": "NODE_OPTIONS=\"--no-warnings --experimental-modules --experimental-vm-modules\" jest -c test/esm/jest.config.mjs",
@@ -33,7 +43,6 @@
     "url": "https://github.com/modosc/express-robots-txt/issues"
   },
   "homepage": "https://github.com/modosc/express-robots-txt",
-  "packageManager": "yarn@3.5.0",
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
@@ -50,5 +59,71 @@
     "jest": "29.5.0",
     "jest-config": "29.5.0",
     "supertest": "^6.3.3"
+  },
+  "peerDependencies": {
+    "express": "^4.12.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb-base"
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "ecmaFeatures": {
+        "globalReturn": false
+      },
+      "requireConfigFile": false
+    },
+    "plugins": [
+      "babel"
+    ],
+    "rules": {
+      "import/extensions": [
+        "error",
+        {
+          "mjs": "always"
+        }
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "strict": 0,
+      "no-underscore-dangle": 0
+    }
   }
 }
